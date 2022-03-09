@@ -1,0 +1,14 @@
+server:
+  port: 10087
+spring:
+  application:
+    name: disco-gateway
+eureka:
+  client:
+    registry-fetch-interval-seconds: 5
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+zuul:
+  prefix: /api
+  routes:
+    disco-item-service: /item/** # 商品微服务映射路径
