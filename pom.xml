@@ -16,7 +16,7 @@
         <module>disco-registry</module>
         <module>disco-gateway</module>
         <module>disco-item</module>
-        <module>disco-item-interface</module>
+        <module>disco-common</module>
     </modules>
     <packaging>pom</packaging>
     <name>disco-mall</name>
@@ -85,6 +85,11 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
