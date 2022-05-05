@@ -25,6 +25,11 @@ public class CategoryController {
     @Resource
     private CategoryService categoryService;
 
+    /**
+     * 根据父id查询商品分类
+     * @param pid
+     * @return
+     */
     @GetMapping("list")
     public ResponseEntity<List<Category>> queryCategoryByPid(@RequestParam(value = "pid",defaultValue = "0") Long pid){
         if (pid == null || pid < 0){
