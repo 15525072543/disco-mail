@@ -3,13 +3,16 @@ package com.disco.item.controller;
 import com.disco.item.service.BrandService;
 import com.disco.pojo.Brand;
 import com.leyou.common.pojo.PageResult;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @ClassName: BrandController
@@ -46,5 +49,17 @@ public class BrandController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(pageResult);
+    }
+
+    /**
+     * 新增品牌
+     * @param brand 品牌实体类
+     * @param cids 分类id
+     * @return
+     */
+    @PostMapping
+    public ResponseEntity<Void> saveBrand(Brand brand, @RequestParam("cids")List<Long> cids){
+        this.brandService.saveBrand(brand,cids);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }

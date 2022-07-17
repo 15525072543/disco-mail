@@ -3,6 +3,8 @@ package com.disco.item.service;
 import com.disco.pojo.Brand;
 import com.leyou.common.pojo.PageResult;
 
+import java.util.List;
+
 /**
  * @ClassName: BrandService
  * @Description: 品牌相关接口
@@ -21,5 +23,13 @@ public interface BrandService {
      * @return 分页实体类
      */
     PageResult<Brand> queryBrandsByPage(String key, Integer page, Integer rows, String sortBy, Boolean desc);
+
+    /**
+     * 新增品牌
+     * @param brand 品牌实体类
+     * @param cids 分类id
+     */
+    void saveBrand(Brand brand, List<Long> cids);
+
 
 }

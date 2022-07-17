@@ -8,6 +8,7 @@ import com.github.pagehelper.PageInfo;
 import com.leyou.common.pojo.PageResult;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
@@ -46,4 +47,18 @@ public class BrandServiceImpl implements BrandService {
         PageInfo<Brand> pageInfo = new PageInfo<>(brands);
         return new PageResult<Brand>(pageInfo.getTotal(),pageInfo.getList());
     }
+
+    @Override
+    @Transactional
+    public void saveBrand(Brand brand, List<Long> cids) {
+        // 新增品牌
+        this.brandMapper.insertSelective(brand);
+        // 新增品牌分类中间表
+        cids.forEach(cid -> {
+            this.brandMapper.insertCategoryAndBrand(brand.getId(),cid);
+        });
+
+    }
+
+
 }

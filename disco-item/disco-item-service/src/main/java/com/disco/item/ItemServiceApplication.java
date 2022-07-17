@@ -13,8 +13,8 @@ import tk.mybatis.spring.annotation.MapperScan;
 @SpringBootApplication
 @EnableDiscoveryClient
 @MapperScan("com.disco.item.mapper")
-public class ServiceApplication {
+public class ItemServiceApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ServiceApplication.class, args);
+        SpringApplication.run(ItemServiceApplication.class, args);
     }
 }

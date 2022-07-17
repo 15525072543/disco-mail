@@ -21,4 +21,9 @@ public interface CategoryService {
      */
     List<Category> queryCategoryByPid(Long pid);
 
+    /**
+     * 根据id集合获取名称集合
+     */
+    List<String> queryNamesByIds(List<Long> ids);
+
 }

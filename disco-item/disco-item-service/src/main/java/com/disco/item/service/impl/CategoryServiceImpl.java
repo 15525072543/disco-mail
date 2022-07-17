@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @ClassName: CategoryServiceImpl
@@ -25,5 +26,11 @@ public class CategoryServiceImpl implements CategoryService {
         Category category = new Category();
         category.setParentId(pid);
         return categoryMapper.select(category);
+    }
+
+    @Override
+    public List<String> queryNamesByIds(List<Long> ids) {
+        List<Category> categories = categoryMapper.selectByIdList(ids);
+        return categories.stream().map(category -> category.getName()).collect(Collectors.toList());
     }
 }

@@ -17,6 +17,7 @@
         <module>disco-gateway</module>
         <module>disco-item</module>
         <module>disco-common</module>
+        <module>diaco-upload</module>
     </modules>
     <packaging>pom</packaging>
     <name>disco-mall</name>

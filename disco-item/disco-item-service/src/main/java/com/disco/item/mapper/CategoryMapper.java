@@ -1,6 +1,7 @@
 package com.disco.item.mapper;
 
 import com.disco.pojo.Category;
+import tk.mybatis.mapper.additional.idlist.SelectByIdListMapper;
 import tk.mybatis.mapper.common.Mapper;
 
 /**
@@ -9,5 +10,5 @@ import tk.mybatis.mapper.common.Mapper;
  * @date: 2022/4/18
  * @author zhb
  */
-public interface CategoryMapper extends Mapper<Category> {
+public interface CategoryMapper extends Mapper<Category>, SelectByIdListMapper<Category,Long> {
 }
