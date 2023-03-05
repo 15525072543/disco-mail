@@ -1,7 +1,11 @@
 package com.disco.item.service;
 
-import com.disco.pojo.SpuBo;
+import com.disco.bo.SpuBo;
+import com.disco.pojo.Sku;
+import com.disco.pojo.SpuDetail;
 import com.leyou.common.pojo.PageResult;
+
+import java.util.List;
 
 /**
  * @ClassName: GoodsService
@@ -20,4 +24,30 @@ public interface GoodsService {
      * @return
      */
     PageResult<SpuBo> querySpuByPage(String key, Boolean saleable, Integer page, Integer rows);
+
+    /**
+     * 新增商品
+     * @param spuBo 商品实体类
+     */
+    void saveGoods(SpuBo spuBo);
+
+    /**
+     * 根据spuId获取spuDetail
+     * @param spuId
+     * @return
+     */
+    SpuDetail querySpuDetailBySpuId(Long spuId);
+
+    /**
+     * 根据spuId获取sku集合
+     * @param spuId
+     * @return
+     */
+    List<Sku> querySkusBySpuId(Long spuId);
+
+    /**
+     * 修改商品
+     * @param spuBo
+     */
+    void updateGoods(SpuBo spuBo);
 }

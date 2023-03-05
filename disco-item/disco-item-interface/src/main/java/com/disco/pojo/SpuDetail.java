@@ -16,11 +16,11 @@ public class SpuDetail {
 
     @Id
     private Long spuId; // spu的id
-    private Long description; // 商品描述信息
-    private Long spugenericSpecId; // 通用规格参数数据
-    private Long specialSpec; // 特有规格参数及可选值信息，json格式
-    private Long packingList; // 包装清单
-    private Long afterService; // 售后服务
+    private String description; // 商品描述信息
+    private String genericSpec; // 通用规格参数数据
+    private String specialSpec; // 特有规格参数及可选值信息，json格式
+    private String packingList; // 包装清单
+    private String afterService; // 售后服务
 
     public Long getSpuId() {
         return spuId;
@@ -30,43 +30,43 @@ public class SpuDetail {
         this.spuId = spuId;
     }
 
-    public Long getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(Long description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public Long getSpugenericSpecId() {
-        return spugenericSpecId;
+    public String getGenericSpec() {
+        return genericSpec;
     }
 
-    public void setSpugenericSpecId(Long spugenericSpecId) {
-        this.spugenericSpecId = spugenericSpecId;
+    public void setGenericSpec(String genericSpec) {
+        this.genericSpec = genericSpec;
     }
 
-    public Long getSpecialSpec() {
+    public String getSpecialSpec() {
         return specialSpec;
     }
 
-    public void setSpecialSpec(Long specialSpec) {
+    public void setSpecialSpec(String specialSpec) {
         this.specialSpec = specialSpec;
     }
 
-    public Long getPackingList() {
+    public String getPackingList() {
         return packingList;
     }
 
-    public void setPackingList(Long packingList) {
+    public void setPackingList(String packingList) {
         this.packingList = packingList;
     }
 
-    public Long getAfterService() {
+    public String getAfterService() {
         return afterService;
     }
 
-    public void setAfterService(Long afterService) {
+    public void setAfterService(String afterService) {
         this.afterService = afterService;
     }
 }

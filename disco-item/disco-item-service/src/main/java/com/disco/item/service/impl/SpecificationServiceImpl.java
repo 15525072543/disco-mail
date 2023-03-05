@@ -4,6 +4,7 @@ import com.disco.item.mapper.SpecGroupMapper;
 import com.disco.item.mapper.SpecParamMapper;
 import com.disco.pojo.SpecGroup;
 import com.disco.pojo.SpecParam;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -40,9 +41,12 @@ public class SpecificationServiceImpl {
      * @param gid 规格参数组id
      * @return 规格参数
      */
-    public List<SpecParam> queryParams(Long gid) {
+    public List<SpecParam> queryParams(Long gid, Long cid, Boolean generic, Boolean searching) {
         SpecParam record = new SpecParam();
         record.setGroupId(gid);
+        record.setCid(cid);
+        record.setGeneric(generic);
+        record.setSearching(searching);
         return this.specParamMapper.select(record);
     }
 }

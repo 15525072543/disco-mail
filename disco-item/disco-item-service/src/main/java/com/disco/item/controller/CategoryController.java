@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
+import javax.management.Query;
 import java.util.List;
 
 /**
@@ -43,5 +44,19 @@ public class CategoryController {
         }
         // 200 查询成功
         return ResponseEntity.ok(categories);
+    }
+
+    /**
+     * 根据id集合查询分类名称
+     * @param ids
+     * @return
+     */
+    @GetMapping("names")
+    public ResponseEntity<List<String>> queryNamesByIds(@RequestParam("ids")List<Long> ids){
+        List<String> names = this.categoryService.queryNamesByIds(ids);
+        if (CollectionUtils.isEmpty(names)){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(names);
     }
 }

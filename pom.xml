@@ -18,6 +18,8 @@
         <module>disco-item</module>
         <module>disco-common</module>
         <module>diaco-upload</module>
+        <module>demo-elasticsearch</module>
+        <module>disco-search</module>
     </modules>
     <packaging>pom</packaging>
     <name>disco-mall</name>
