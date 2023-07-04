@@ -18,7 +18,6 @@ import java.util.List;
  * @date: 2023/3/5
  * @author zhb
  */
-@RequestMapping("goods")
 public interface GoodsApi {
 
     /**
