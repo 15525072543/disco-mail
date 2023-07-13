@@ -20,6 +20,7 @@
         <module>diaco-upload</module>
         <module>demo-elasticsearch</module>
         <module>disco-search</module>
+        <module>disco-goods-web</module>
     </modules>
     <packaging>pom</packaging>
     <name>disco-mall</name>

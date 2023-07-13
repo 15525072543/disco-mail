@@ -2,6 +2,7 @@ package com.disco.item.service;
 
 import com.disco.bo.SpuBo;
 import com.disco.pojo.Sku;
+import com.disco.pojo.Spu;
 import com.disco.pojo.SpuDetail;
 import com.leyou.common.pojo.PageResult;
 
@@ -50,4 +51,11 @@ public interface GoodsService {
      * @param spuBo
      */
     void updateGoods(SpuBo spuBo);
+
+    /**
+     * 根据spuId查询spu
+     * @param id
+     * @return
+     */
+    Spu querySpuById(Long id);
 }

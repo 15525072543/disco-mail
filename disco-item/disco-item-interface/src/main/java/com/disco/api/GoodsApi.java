@@ -2,6 +2,7 @@ package com.disco.api;
 
 import com.disco.bo.SpuBo;
 import com.disco.pojo.Sku;
+import com.disco.pojo.Spu;
 import com.disco.pojo.SpuDetail;
 import com.leyou.common.pojo.PageResult;
 import org.springframework.http.ResponseEntity;
@@ -30,10 +31,10 @@ public interface GoodsApi {
      */
     @GetMapping("spu/page")
     public PageResult<SpuBo> querySpuByPage(
-        @RequestParam(value = "key",required = false) String key,
-        @RequestParam(value = "saleable",required = false) Boolean saleable,
-        @RequestParam(value = "page",defaultValue = "1") Integer page,
-        @RequestParam(value = "rows",defaultValue = "5") Integer rows
+        @RequestParam(value = "key", required = false) String key,
+        @RequestParam(value = "saleable", required = false) Boolean saleable,
+        @RequestParam(value = "page", defaultValue = "1") Integer page,
+        @RequestParam(value = "rows", defaultValue = "5") Integer rows
     );
 
     /**
@@ -42,7 +43,7 @@ public interface GoodsApi {
      * @return
      */
     @GetMapping("spu/detail/{spuId}")
-    public SpuDetail querySpuDetailBySpuId(@PathVariable("spuId")Long spuId);
+    public SpuDetail querySpuDetailBySpuId(@PathVariable("spuId") Long spuId);
 
     /**
      * 根据spuId获取sku集合
@@ -50,5 +51,14 @@ public interface GoodsApi {
      * @return
      */
     @GetMapping("sku/list")
-    public List<Sku> querySkusBySpuId(@RequestParam("id")Long spuId);
+    public List<Sku> querySkusBySpuId(@RequestParam("id") Long spuId);
+
+    /**
+     * 根据spuId查询spu
+     * @param id
+     * @return
+     */
+    @GetMapping("{id}")
+    public Spu querySpuById(@PathVariable("id") Long id);
+
 }

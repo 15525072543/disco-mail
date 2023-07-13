@@ -1,6 +1,13 @@
 server:
   port: 10010
 spring:
+  rabbitmq:
+      virtual-host: /leyou
+      host: 192.168.209.200
+      username: leyou
+      password: leyou
+      template:
+        exchange: LEYOU.ITEM.EXCHANGE
   application:
     name: disco-item-service
   datasource:

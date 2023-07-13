@@ -21,5 +21,5 @@ public interface BrandApi {
      * @return
      */
     @GetMapping("{id}")
-    public ResponseEntity<Brand> queryBrandById(@PathVariable("id") Long id);
+    public Brand queryBrandById(@PathVariable("id") Long id);
 }

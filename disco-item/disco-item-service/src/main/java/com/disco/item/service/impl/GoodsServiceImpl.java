@@ -10,6 +10,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.leyou.common.pojo.PageResult;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -50,6 +51,9 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Resource
     private CategoryService categoryService;
+
+    @Resource
+    private AmqpTemplate amqpTemplate;
 
     public GoodsServiceImpl() {
     }
@@ -103,6 +107,12 @@ public class GoodsServiceImpl implements GoodsService {
         this.spuDetailMapper.insertSelective(record);
         // 新增sku和stock
         saveSkuAndStock(spuBo);
+
+        try {
+            sendMsg("insert",spuBo.getId());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -166,5 +176,25 @@ public class GoodsServiceImpl implements GoodsService {
         spuBo.setSaleable(null);
         this.spuMapper.updateByPrimaryKeySelective(spuBo);
         this.spuDetailMapper.updateByPrimaryKeySelective(spuBo.getSpuDetail());
+
+        try {
+            sendMsg("update",spuBo.getId());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public Spu querySpuById(Long id) {
+        return spuMapper.selectByPrimaryKey(id);
+    }
+
+    /**
+     * 发送消息到消息队列
+     * @param type 路由路径
+     * @param id spuId
+     */
+    private void sendMsg(String type,Long id){
+        amqpTemplate.convertAndSend("item." + type,id);
     }
 }

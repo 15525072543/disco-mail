@@ -3,6 +3,7 @@ package com.disco.item.controller;
 import com.disco.item.service.GoodsService;
 import com.disco.bo.SpuBo;
 import com.disco.pojo.Sku;
+import com.disco.pojo.Spu;
 import com.disco.pojo.SpuDetail;
 import com.leyou.common.pojo.PageResult;
 import org.springframework.http.HttpStatus;
@@ -95,5 +96,19 @@ public class GoodsController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
         return ResponseEntity.ok(skus);
+    }
+
+    /**
+     * 根据spuId查询spu
+     * @param id
+     * @return
+     */
+    @GetMapping("{id}")
+    public ResponseEntity<Spu> querySpuById(@PathVariable("id")Long id){
+        Spu spu = goodsService.querySpuById(id);
+        if (spu == null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.ok(spu);
     }
 }

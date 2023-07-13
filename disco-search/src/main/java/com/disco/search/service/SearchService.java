@@ -179,7 +179,7 @@ public class SearchService {
 
         return terms.getBuckets().stream().map(bucket -> {
             long brandId = bucket.getKeyAsNumber().longValue();
-            return brandClient.queryBrandById(brandId).getBody();
+            return brandClient.queryBrandById(brandId);
         }).collect(Collectors.toList());
     }
 
@@ -236,7 +236,7 @@ public class SearchService {
         List<String> categoryNames = categoryClient.queryNamesByIds(Arrays.asList(spu.getCid1(), spu.getCid2(), spu.getCid3()));
 
         //根据spu的brandId查询品牌名称
-        ResponseEntity<Brand> brandName = brandClient.queryBrandById(spu.getBrandId());
+        Brand brandName = brandClient.queryBrandById(spu.getBrandId());
 
         /*
          * 拼装spu的所有规格参数
@@ -313,5 +313,10 @@ public class SearchService {
     }
 
 
+    public void saveGoods(Long id) throws IOException {
+        Spu spu = this.goodsClient.querySpuById(id);
+        Goods goods = this.buildGoods(spu);
+        this.goodsRepository.save(goods);
+    }
 }
 

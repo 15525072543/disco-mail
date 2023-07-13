@@ -3,6 +3,7 @@ package com.disco.item.controller;
 import com.disco.item.service.impl.SpecificationServiceImpl;
 import com.disco.pojo.SpecGroup;
 import com.disco.pojo.SpecParam;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
@@ -59,5 +60,19 @@ public class SpecificationController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(params);
+    }
+
+    /**
+     * 根据分类id 查询组、组下的规格参数信息
+     * @param cid
+     * @return
+     */
+    @GetMapping("group/param/{cid}")
+    public ResponseEntity<List<SpecGroup>> queryGroupsWithParam(@PathVariable("cid")Long cid){
+        List<SpecGroup> specGroups = this.specificationService.queryGroupsWithParam(cid);
+        if (CollectionUtils.isEmpty(specGroups) || specGroups == null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.ok(specGroups);
     }
 }
