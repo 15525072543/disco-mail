@@ -24,6 +24,7 @@
         <module>disco-user</module>
         <module>disco-auth</module>
         <module>disco-car</module>
+        <module>disco-order</module>
     </modules>
     <packaging>pom</packaging>
     <name>disco-mall</name>
