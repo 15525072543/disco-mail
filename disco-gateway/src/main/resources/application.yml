@@ -13,3 +13,21 @@ zuul:
   routes:
     disco-item-service: /item/** # 商品微服务映射路径
     search-service: /search/** # 搜索微服务路径
+    user-service: /user/** #用户微服务路径
+    auth-service: /auth/** #用户微服务路径
+    cart-service: /cart/** #购物车微服务路径
+  add-host-header: true #允许请求携带地址（www.leyou.com）的头信息,否则响应cookie的domain为空，
+                        # 浏览器接受不到cookie的值
+  sensitive-headers: #将默认过滤敏感头信息置位空，保证cookie可以返回给浏览器
+disco:
+  jwt:
+    pubKeyPath: E:\\study\\projects\\rsa.pub #生成公钥文件的路径
+    cookieName: DISCO_TOKEN #cookie名称
+  filter:
+    allowPaths:
+      - /api/auth
+      - /api/search
+      - /api/user/register
+      - /api/user/check
+      - /api/user/code
+      - /api/item

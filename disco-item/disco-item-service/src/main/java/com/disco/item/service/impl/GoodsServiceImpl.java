@@ -189,6 +189,11 @@ public class GoodsServiceImpl implements GoodsService {
         return spuMapper.selectByPrimaryKey(id);
     }
 
+    @Override
+    public Sku querySkuBySkuId(Long skuId) {
+        return this.skuMapper.selectByPrimaryKey(skuId);
+    }
+
     /**
      * 发送消息到消息队列
      * @param type 路由路径
